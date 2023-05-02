@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author nykol
+ *
+ */
+module pokemon {
+}
