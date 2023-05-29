@@ -1,0 +1,22 @@
+
+*{
+    margin: 0px;
+    padding: 10px;
+    /*border: black 1px solid;*/
+
+}
+
+p{
+	color:"red";
+	
+}
+
+h1{
+	color:red;
+
+}
+
+.actividades{
+	border: black 1px solid;
+	margin-top: 10px;
+}
