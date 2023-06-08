@@ -15,10 +15,12 @@ public class EntityService {
     public EntityService(EntityRepository entityRepository) {
         this.entityRepository = entityRepository;
     }
+    
     //Devolviendo todos los libros.
     public List<MyEntity> allEntitys() {
         return (List<MyEntity>) entityRepository.findAll();
     }
+    
     //Creando un libro.
     public MyEntity createBook(MyEntity b) {
         return entityRepository.save(b);
@@ -30,7 +32,6 @@ public class EntityService {
         if(optionalEntity.isPresent()) {
             return optionalEntity.get();
         } else {
-        	System.out.println("Xd");
             return null;
         }
     }

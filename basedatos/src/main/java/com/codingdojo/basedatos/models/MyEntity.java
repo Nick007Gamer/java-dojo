@@ -1,7 +1,6 @@
 package com.codingdojo.basedatos.models	;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,24 +9,25 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name = "cities")
+@Table(name = "countries")
 public class MyEntity {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
     private Long id;
 
+    @Column(name = "code")
+    private String code;
+    
+    @Column(name = "continent")
+    private String continent;
+    
     @Column(name = "name")
     private String name;
     
-    @Column(name = "country_code")
-    private String country_code;
-    
-    @Column(name = "disctrict")
-    private String disctrict;
-    
-    @Column(name = "population")
-    private String population;
+    @Column(name = "region")
+    private String region;
 
     // Otros atributos y métodos
     
@@ -35,19 +35,14 @@ public class MyEntity {
     public MyEntity() {
     	
     }
-    
-
-
-	public MyEntity(Long id, String name, String country_code, String disctrict, String population) {
-		super();
+        
+	public MyEntity(Long id, String code, String continent, String name, String region) {
 		this.id = id;
+		this.code = code;
+		this.continent = continent;
 		this.name = name;
-		this.country_code = country_code;
-		this.disctrict = disctrict;
-		this.population = population;
+		this.region = region;
 	}
-
-
 
 	public Long getId() {
 		return id;
@@ -55,6 +50,22 @@ public class MyEntity {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getContinent() {
+		return continent;
+	}
+
+	public void setContinent(String continent) {
+		this.continent = continent;
 	}
 
 	public String getName() {
@@ -65,32 +76,17 @@ public class MyEntity {
 		this.name = name;
 	}
 
-	public String getCountry_code() {
-		return country_code;
+	public String getRegion() {
+		return region;
 	}
 
-	public void setCountry_code(String country_code) {
-		this.country_code = country_code;
+	public void setRegion(String region) {
+		this.region = region;
 	}
+    
 
-	public String getDisctrict() {
-		return disctrict;
-	}
 
-	public void setDisctrict(String disctrict) {
-		this.disctrict = disctrict;
-	}
 
-	public String getPopulation() {
-		return population;
-	}
 
-	public void setPopulation(String population) {
-		this.population = population;
-	}
-    
-    
-    
-    
-    
+	               
 }

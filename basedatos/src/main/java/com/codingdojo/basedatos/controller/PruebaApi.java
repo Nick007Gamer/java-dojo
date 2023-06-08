@@ -1,6 +1,5 @@
 package com.codingdojo.basedatos.controller;
 
-import java.awt.print.Book;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,14 +18,15 @@ public class PruebaApi {
     public PruebaApi(EntityService entityService){
         this.entityService = entityService;
     }
+    
     @RequestMapping("/api/services")
     public List<MyEntity> index() {
         return entityService.allEntitys();
     }
     
     @RequestMapping(value="/api/services", method=RequestMethod.POST)
-    public MyEntity create(@RequestParam(value="id") Long id, @RequestParam(value="name") String name, @RequestParam(value="country_code") String country_code, @RequestParam(value="disctrict") String disctrict,@RequestParam(value="population") String population) {
-        MyEntity book = new MyEntity(id, name, country_code, disctrict, population);
+    public MyEntity create(@RequestParam(value="id") Long id, @RequestParam(value="code") String code, @RequestParam(value="continent") String continent, @RequestParam(value="name") String name,@RequestParam(value="region") String region) {
+        MyEntity book = new MyEntity(id, code, continent, name, region);
         return entityService.createBook(book);
     }
     
@@ -38,20 +38,20 @@ public class PruebaApi {
 
     //Otros métodos han sido removidos para resumir.
     @RequestMapping(value="/api/entity/{id}", method=RequestMethod.PUT)
-    public MyEntity update(@PathVariable("id") Long id, @RequestParam(value="name") String name, @RequestParam(value="country_code") String country_code, @RequestParam(value="disctrict") String disctrict, @RequestParam(value="population") String population) {
+    public MyEntity update(@PathVariable("id") Long id, @RequestParam(value="code") String code, @RequestParam(value="continent") String continent, @RequestParam(value="name") String name, @RequestParam(value="region") String region) {
     	MyEntity book = entityService.findBook(id);
     	book.setId(id);
-    	book.setCountry_code(country_code);
-    	book.setDisctrict(disctrict);
+    	book.setCode(code);
+    	book.setContinent(continent);
     	book.setName(name);
-    	book.setPopulation(population);
+    	book.setRegion(region);
     	entityService.updateEntity(book);
     	
         return book;
     }
     
-    @RequestMapping(value="/api/entity/{id}", method=RequestMethod.DELETE)
-    public void destroy(@PathVariable("id") Long id) {
+    @RequestMapping(value="/api/entity/{country_id}", method=RequestMethod.DELETE)
+    public void destroy(@PathVariable("country_id") Long id) {
 
     	entityService.deleteEntity(id);
     }
